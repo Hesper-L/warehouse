@@ -1,13 +1,32 @@
 # TEST
 
+## 学习笔记|项目记录（算法组）
+
+### 数学题（Day1）
+
+关于求导数的题目，翻阅《高等代数》一书，巩固了有关指数函数求导，可以换元，接着通过求其对数函数的导函数解决问题；
+
+关于数列收敛问题，翻阅《数学分析》一书，查阅“有界”、“收敛”相关章节，应用“单调有界函数一定收敛”的定理证明题目。
+
+### 数据结构（Day2-Day3）
+
+（发现问题）一开始看到题目是懵圈的，由于python语言的简洁性，决定用python解决问题。
+
+Python本来是0基础，刚好在任务发布之前听完了慕课里面北工大的老师所上的57小节网课，对python的全局大观有了一定的了解。
+
+（分析问题）其实就解决问题,我已经有以下思路：
+
+阶梯足够短时，零阶或者一阶会产生最小花费，即:当i<2,f[i]=cost[i];
+
+而有超过二阶时，最小花费就是当前阶梯的花费加上前两阶或者前一阶的花费较小值，即：当i>=2,状态转移方程：f[i]=cost[i]+min(f[i-2],f[i-1])
+
+   (解决问题)而了解到数据结构问题其实就是力扣的书写解答，所以去b站听了一些力扣简单题的分析与解答，初步掌握技巧。由朋友推荐到CSDN网站寻找思路：怎样转化为代码
+
 ```
- public int minCostClimbingStairs(int[] cost) {
-        int l = cost.length;
-        int dp[] = new int[l+1];
+class Solution:
+    def minCostClimbingStairs(self, cost: List[int]) -> int:
+        for i in range(2, len(cost)):
+            cost[i] = min(cost[i - 2], cost[i - 1]) + cost[i]
+        return min(cost[-2], cost[-1])
+```        
         
-        for (int i =2; i<=l;i++){
-            dp[i] = Math.min(dp[i-1]+cost[i-1],dp[i-2]+cost[i-2]);
-        }
-        return dp[l];
-        }
-```
